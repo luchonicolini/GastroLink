@@ -13,7 +13,7 @@
   <b>Solución web ligera y personalizable de enlace en biografía (Link-in-Bio) y carta gastronómica interactiva para restaurantes y locales culinarios.</b>
 </p>
 
-[Visión General](#visión-general) • [Características](#características) • [Estructura del Proyecto](#estructura-del-proyecto) • [Personalización](#guía-de-personalización) • [Despliegue](#despliegue)
+[Visión General](#visión-general) • [Demostración Visual](#demostración-visual) • [Características](#características) • [Estructura del Proyecto](#estructura-del-proyecto) • [Personalización](#guía-de-personalización) • [Despliegue](#despliegue)
 
 </div>
 
@@ -24,6 +24,18 @@
 GastroLink es una solución web orientada al sector gastronómico diseñada para sustituir los árboles de enlaces genéricos (como Linktree o Beacons) por una experiencia visual alineada a la identidad de un restaurante.
 
 El proyecto combina un portal de accesos directos (redes, reservas por WhatsApp, ubicación y delivery) con una carta digital interactiva estructurada por secciones. Está construido bajo una arquitectura de marca blanca (white-label), lo que permite reutilizar el código base y adaptarlo a distintos establecimientos culinarios modificando variables de diseño, recursos gráficos y contenidos.
+
+---
+
+## Demostración Visual
+
+<div align="center">
+
+| Portal Link-in-Bio (`index.html`) | Carta Gastronómica (`menu.html`) |
+| :---: | :---: |
+| <img src="assets/preview-portal.png" width="320" alt="Vista previa del portal Link-in-Bio" /> | <img src="assets/preview-menu.png" width="320" alt="Vista previa de la carta gastronómica digital" /> |
+
+</div>
 
 ---
 
@@ -56,6 +68,8 @@ GastroLink/
 ├── index.html              # Portal principal Link-in-Bio
 ├── menu.html               # Carta gastronómica interactiva
 ├── assets/
+│   ├── preview-portal.png  # Captura visual del portal para documentación
+│   ├── preview-menu.png    # Captura visual de la carta para documentación
 │   ├── hero.png            # Logotipo / imagen principal
 │   ├── hero-blur.png       # Resplandor ambiental de cabecera
 │   ├── whatsapp-thumb.png  # Miniatura gráfica para botón de WhatsApp
