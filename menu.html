@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Menú · PASTA by Mauro Lacagnina</title>
+  <meta name="description" content="Menú de PASTA by Mauro Lacagnina: antipasti, pastas, salsas, insalate, dolce, bebidas y vinos." />
+  <meta name="theme-color" content="#F4F0EE" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cream: #F4F0EE;
+      --navy: #140C47;
+      --ink: rgba(20, 12, 71, 0.78);
+      --line: rgba(20, 12, 71, 0.16);
+      --display: 'Bodoni Moda', 'Times New Roman', serif;
+      --sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 84px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--navy);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    ::selection { background: var(--navy); color: var(--cream); }
+
+    a { color: inherit; }
+
+    :focus-visible {
+      outline: 2px solid var(--navy);
+      outline-offset: 3px;
+    }
+
+    .skip {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--navy);
+      color: var(--cream);
+      padding: 0.75rem 1rem;
+      z-index: 100;
+    }
+    .skip:focus { left: 1rem; top: 1rem; }
+
+    /* ================= NAV ================= */
+    .menu-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(244, 240, 238, 0.9);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .menu-nav__inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      padding: 0.7rem clamp(1rem, 3vw, 2rem);
+    }
+
+    .brand {
+      font-family: var(--display);
+      font-size: 1.3rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      flex: 0 0 auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.15rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      margin-left: auto;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+
+    .nav-links a {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.5rem 0.72rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      color: rgba(20, 12, 71, 0.68);
+      transition: color 180ms ease, background 180ms ease;
+    }
+    .nav-links a:hover { color: var(--navy); background: rgba(20, 12, 71, 0.06); }
+    .nav-links a.active { background: var(--navy); color: var(--cream); }
+
+    /* ================= COVER ================= */
+    .cover {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: clamp(2.2rem, 5vw, 4.5rem) clamp(1.25rem, 4vw, 2rem) clamp(1.5rem, 3vw, 2.5rem);
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: clamp(1rem, 3vw, 2.5rem);
+      align-items: center;
+    }
+
+    .cover__text { min-width: 0; }
+
+    .cover__eyebrow {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(2.2rem, 5.6vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .cover__title {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(4.4rem, 12vw, 8.6rem);
+      line-height: 0.84;
+      letter-spacing: 0.005em;
+      margin: 0.06em 0 0;
+      text-transform: uppercase;
+    }
+
+    .cover__by {
+      margin: 1.3rem 0 0;
+      font-size: clamp(0.62rem, 1.4vw, 0.78rem);
+      font-weight: 500;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+    }
+
+    .cover__art {
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      justify-self: center;
+      display: block;
+    }
+
+    @media (max-width: 720px) {
+      .cover { grid-template-columns: 1fr; text-align: center; }
+      .cover__art { max-width: 340px; margin-top: 0.5rem; }
+      .cover__by { letter-spacing: 0.3em; }
+    }
+
+    /* ================= SECTIONS ================= */
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: clamp(2.6rem, 6vw, 4.6rem) clamp(1.25rem, 4vw, 2rem);
+      position: relative;
+    }
+
+    .section + .section { border-top: 1px solid var(--line); }
+
+    .section__head {
+      position: relative;
+      text-align: center;
+      margin-bottom: clamp(1.7rem, 3.5vw, 2.8rem);
+    }
+
+    .section__title {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(2.6rem, 6.2vw, 4.5rem);
+      line-height: 0.98;
+      letter-spacing: 0.045em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .section__note {
+      margin: 0.85rem 0 0;
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(20, 12, 71, 0.55);
+    }
+
+    .accent {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+      width: clamp(54px, 8vw, 108px);
+      height: auto;
+      opacity: 0.95;
+    }
+    .accent--tl { top: -14px; left: 2%; }
+    .accent--tr { top: -18px; right: 2%; }
+    .accent--tl-sm { top: 10px; left: 0; width: clamp(44px, 6vw, 78px); }
+
+    @media (max-width: 640px) {
+      .accent { display: none; }
+    }
+
+    /* ================= ITEMS ================= */
+    .items {
+      display: grid;
+      gap: clamp(1.5rem, 3vw, 2.2rem) clamp(2rem, 6vw, 4.5rem);
+      align-items: start;
+    }
+    @media (min-width: 760px) {
+      .items--2 { grid-template-columns: 1fr 1fr; }
+    }
+
+    .item { min-width: 0; }
+
+    .item__row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.55rem;
+    }
+
+    .item__name {
+      font-family: var(--sans);
+      font-size: 0.81rem;
+      font-weight: 700;
+      letter-spacing: 0.045em;
+      text-transform: uppercase;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .item__dots {
+      flex: 1 1 auto;
+      min-width: 1.25rem;
+      border-bottom: 1px dotted rgba(20, 12, 71, 0.32);
+      transform: translateY(-0.22em);
+    }
+
+    .item__price {
+      flex: 0 0 auto;
+      font-size: 0.81rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .item__desc {
+      margin: 0.32rem 0 0;
+      font-size: 0.8rem;
+      line-height: 1.62;
+      color: var(--ink);
+      max-width: 46ch;
+    }
+
+    .item__desc + .item__desc { margin-top: 0.15rem; }
+
+    /* ================= SUBSECTIONS ================= */
+    .sub { margin-top: clamp(2.2rem, 4.5vw, 3.4rem); }
+    .sub:first-of-type { margin-top: 0; }
+
+    .sub__title {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(1.55rem, 3.4vw, 2.3rem);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 0 0 clamp(1.1rem, 2.5vw, 1.7rem);
+      line-height: 1.05;
+    }
+
+    .sub__title--left { text-align: left; }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.35rem;
+    }
+
+    .chip {
+      border: 1px solid rgba(20, 12, 71, 0.28);
+      border-radius: 999px;
+      padding: 0.5rem 1.05rem;
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 1px solid var(--navy);
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      vertical-align: middle;
+      margin-left: 0.55rem;
+    }
+    .badge svg { width: 12px; height: 12px; }
+
+    /* ================= SIMPLE LISTS (bebidas / vinos) ================= */
+    .list-grid {
+      display: grid;
+      gap: 1.6rem clamp(2rem, 6vw, 4.5rem);
+      align-items: start;
+    }
+    @media (min-width: 760px) {
+      .list-grid--2 { grid-template-columns: 1fr 1fr; }
+      .list-grid--3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .list-block { min-width: 0; }
+
+    .list-block__title {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin: 0 0 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(20, 12, 71, 0.25);
+      line-height: 1.1;
+    }
+
+    .simple-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.55rem;
+      padding: 0.32rem 0;
+    }
+
+    .simple-item__name {
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.035em;
+      text-transform: uppercase;
+      line-height: 1.45;
+    }
+
+    .simple-item__winery {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: var(--ink);
+      line-height: 1.5;
+      margin-top: 0.1rem;
+    }
+
+    .simple-item__dots {
+      flex: 1 1 auto;
+      min-width: 1rem;
+      border-bottom: 1px dotted rgba(20, 12, 71, 0.28);
+      transform: translateY(-0.2em);
+    }
+
+    .simple-item__price {
+      flex: 0 0 auto;
+      font-size: 0.76rem;
+      font-weight: 700;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .wine-grid {
+      display: grid;
+      gap: 2rem clamp(2rem, 5vw, 3.5rem);
+      align-items: start;
+    }
+    @media (min-width: 760px) {
+      .wine-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ================= NOTES / FOOTER ================= */
+    .notes {
+      margin: clamp(2.4rem, 5vw, 3.6rem) auto 0;
+      max-width: 720px;
+      text-align: center;
+      font-size: 0.78rem;
+      line-height: 1.75;
+      color: var(--ink);
+    }
+    .notes strong { color: var(--navy); letter-spacing: 0.06em; }
+    .notes p { margin: 0.35rem 0; }
+
+    .footer {
+      background: var(--navy);
+      color: var(--cream);
+      padding: clamp(2.5rem, 6vw, 4rem) clamp(1.25rem, 4vw, 2rem) 2rem;
+      text-align: center;
+    }
+
+    .footer__title {
+      font-family: var(--display);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      letter-spacing: 0.12em;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .footer__by {
+      margin: 0.7rem 0 0;
+      font-size: 0.6rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: rgba(244, 240, 238, 0.6);
+    }
+
+    .footer__links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 1.6rem;
+    }
+
+    .footer__links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(244, 240, 238, 0.3);
+      border-radius: 999px;
+      padding: 0.62rem 1.05rem;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 180ms ease, border-color 180ms ease;
+    }
+    .footer__links a:hover {
+      background: rgba(244, 240, 238, 0.12);
+      border-color: rgba(244, 240, 238, 0.55);
+    }
+    .footer__links svg { width: 14px; height: 14px; }
+
+    .footer__address {
+      margin: 1.6rem 0 0;
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      color: rgba(244, 240, 238, 0.5);
+    }
+
+    /* ================= PRINT ================= */
+    @media print {
+      .menu-nav, .footer__links, .skip { display: none !important; }
+      html { scroll-padding-top: 0; }
+      body { background: #fff; color: #140C47; }
+      .section { break-inside: avoid; padding: 1.4rem 0; }
+      .item, .list-block { break-inside: avoid; }
+      .footer { background: #fff; color: #140C47; border-top: 1px solid rgba(20,12,71,.2); }
+      .footer__by, .footer__address { color: rgba(20,12,71,.6); }
+      .footer__links { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip" href="#antipasti">Saltar al menú</a>
+
+  <!-- ================= NAV ================= -->
+  <header class="menu-nav">
+    <div class="menu-nav__inner">
+      <a class="brand" href="#top" aria-label="PASTA, inicio del menú">PASTA</a>
+      <nav class="nav-links" aria-label="Secciones del menú">
+        <a href="#antipasti">Antipasti</a>
+        <a href="#pastas">Pastas</a>
+        <a href="#singluten">Sin gluten</a>
+        <a href="#insalate">Insalate</a>
+        <a href="#dolce">Dolce</a>
+        <a href="#bevande">Bevande</a>
+        <a href="#vini">Vini</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ================= COVER ================= -->
+    <section class="cover" aria-label="Portada">
+      <div class="cover__text">
+        <p class="cover__eyebrow">Menú</p>
+        <h1 class="cover__title">Pasta</h1>
+        <p class="cover__by">By Mauro Lacagnina</p>
+      </div>
+      <img class="cover__art" src="assets/menu/cover-illustrations.png" alt="" aria-hidden="true" />
+    </section>
+
+    <!-- ================= ANTIPASTI ================= -->
+    <section class="section" id="antipasti">
+      <div class="section__head">
+        <img class="accent accent--tl" src="assets/menu/provoleta.png" alt="" aria-hidden="true" />
+        <img class="accent accent--tr" src="assets/menu/tomato2.png" alt="" aria-hidden="true" />
+        <h2 class="section__title">Antipasti</h2>
+      </div>
+
+      <div class="items items--2">
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Provoleta grigliata con funghi e spinaci</h3><span class="item__dots"></span><span class="item__price">$18.500</span></div>
+          <p class="item__desc">Provoleta grillada, hongos salteados y espinaca.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Prosciutto crudo e burrata</h3><span class="item__dots"></span><span class="item__price">$23.300</span></div>
+          <p class="item__desc">Burratina mozzari, jamón crudo di Parma, rúcula e cherry.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Hummus di pomodoro e gamberi</h3><span class="item__dots"></span><span class="item__price">$18.500</span></div>
+          <p class="item__desc">Hummus de tomate, langostinos, tomate cherry.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Arancini</h3><span class="item__dots"></span><span class="item__price">$18.500</span></div>
+          <p class="item__desc">Croquetas de risotto de azafrán, ragú alla bolognesa, arvejas y provoleta con salsa romesco y parmesano.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Crostini della casa</h3><span class="item__dots"></span><span class="item__price">$20.300</span></div>
+          <p class="item__desc">Pan de masa madre, tomate San Marzano, mozzarella fior di latte.</p>
+          <p class="item__desc">Pan de masa madre, rúcula y jamón crudo di Parma.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Parmigiana di melanzane</h3><span class="item__dots"></span><span class="item__price">$18.500</span></div>
+          <p class="item__desc">Láminas de berenjenas asadas, pomodoro San Marzano, parmesano, mozzarella fior di latte e albahaca.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= PASTAS ================= -->
+    <section class="section" id="pastas">
+      <div class="section__head">
+        <img class="accent accent--tl" src="assets/menu/farfalle.png" alt="" aria-hidden="true" />
+        <img class="accent accent--tr" src="assets/menu/spaghetti.png" alt="" aria-hidden="true" />
+        <h2 class="section__title">Pastas</h2>
+      </div>
+
+      <div class="items items--2">
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Rigatoni con ragú de osobuco</h3><span class="item__dots"></span><span class="item__price">$30.000</span></div>
+          <p class="item__desc">Pasta seca “rigatoni”, con ragú de osobuco en cocción lenta.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Tonnarelli alla carbonara</h3><span class="item__dots"></span><span class="item__price">$28.000</span></div>
+          <p class="item__desc">Pasta larga de sémola, emulsión de yemas de huevo, queso pecorino romano, guanciale, mucha pimienta.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Lasagna alla bolognesa</h3><span class="item__dots"></span><span class="item__price">$28.500</span></div>
+          <p class="item__desc">La original de ternera en masa de espinaca, besciamella y salsa di pomodoro.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Capellacci di zucca</h3><span class="item__dots"></span><span class="item__price">$27.500</span></div>
+          <p class="item__desc">Pasta rellena de cabutia asada, amarettis, parmesano, mostarda de manzana. Con manteca y salvia.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Spaghetti con polpette e stracciatella</h3><span class="item__dots"></span><span class="item__price">$28.500</span></div>
+          <p class="item__desc">Pasta larga al huevo, pomodoro, albóndigas de carne y cerdo rellenas de mozzarella y queso fresco stracciatella.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Agnolotti del plin de cordero</h3><span class="item__dots"></span><span class="item__price">$30.000</span></div>
+          <p class="item__desc">Pasta rellena de cordero braseado con reducción de carne.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Tortelli di pere e parmesano</h3><span class="item__dots"></span><span class="item__price">$28.000</span></div>
+          <p class="item__desc">Pasta rellena de pera y parmesano con fondeu de queso gorgonzola y nueces.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Spaghetti ai frutti di mare</h3><span class="item__dots"></span><span class="item__price">$30.000</span></div>
+          <p class="item__desc">Pasta larga al huevo con crema, langostinos, mejillones, chipirones, tomate cherry, ajo y ají picante.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Reginette funghi e olio di tartufo nero</h3><span class="item__dots"></span><span class="item__price">$28.000</span></div>
+          <p class="item__desc">Pasta larga al huevo, crema di hongos champignones e portobellos con aceite de trufa negra y fondeu de queso gorgonzola.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Sorrentinos di salmone</h3><span class="item__dots"></span><span class="item__price">$30.000</span></div>
+          <p class="item__desc">Pasta rellena de salmón rosado, manteca avellanada de naranja.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Risotto funghi</h3><span class="item__dots"></span><span class="item__price">$32.000</span></div>
+          <p class="item__desc">Arroz Carnaroli, hongos secos pino, portobellos y champignon.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Gnocchi ripieni per due</h3><span class="item__dots"></span><span class="item__price">$41.000</span></div>
+          <p class="item__desc">Gnocchis de papa rellenos de mozzarella con pomodoro gratinados. Para dos.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Gnocchi ripieni di funghi con vacío per due</h3><span class="item__dots"></span><span class="item__price">$60.000</span></div>
+          <p class="item__desc">Gnocchi rellenos de hongos portobellos, champignones y pino, con tartufo del Piemonte con vacío en cocción lenta para dos.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Cotoletta alla milanese cacio e pepe per due</h3><span class="item__dots"></span><span class="item__price">$65.000</span></div>
+          <p class="item__desc">Milanesa de bife angosto apanada en taralli di Puglia, con pasta seca cacio e pepe.</p>
+        </article>
+      </div>
+
+      <!-- Pastas con salsa a elección -->
+      <div class="sub">
+        <h3 class="sub__title">Pastas con salsa a elección</h3>
+        <div class="items items--2">
+          <article class="item">
+            <div class="item__row"><h3 class="item__name">Ravioles de ricotta y espinaca</h3><span class="item__dots"></span><span class="item__price">$23.500</span></div>
+          </article>
+          <article class="item">
+            <div class="item__row"><h3 class="item__name">Sorrentinos de carne</h3><span class="item__dots"></span><span class="item__price">$25.000</span></div>
+          </article>
+          <article class="item">
+            <div class="item__row"><h3 class="item__name">Spaghetti / fettuccine / fusilli / gnocchi de papa</h3><span class="item__dots"></span><span class="item__price">$23.000</span></div>
+          </article>
+        </div>
+
+        <h4 class="sub__title" style="margin-top: clamp(2rem, 4vw, 2.8rem); font-size: clamp(1.4rem, 2.8vw, 1.9rem);">Salsas</h4>
+        <div class="chips">
+          <span class="chip">Pomodoro</span>
+          <span class="chip">Pesto di pistacho</span>
+          <span class="chip">Bolognesa</span>
+          <span class="chip">Rosa</span>
+          <span class="chip">Crema di funghi</span>
+          <span class="chip">4 quesos</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SIN GLUTEN ================= -->
+    <section class="section" id="singluten">
+      <div class="section__head">
+        <img class="accent accent--tl-sm" src="assets/menu/gnocchi.png" alt="" aria-hidden="true" />
+        <h2 class="section__title">Pastas sin gluten</h2>
+        <p class="section__note">De: @singluten.ozganic</p>
+      </div>
+
+      <div class="items items--2">
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Ravioles de ricotta y verdura</h3><span class="item__dots"></span><span class="item__price">$27.000</span></div>
+          <p class="item__desc">Con salsa di pomodoro italiano y albahaca.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Ravioles de cordero braseado</h3><span class="item__dots"></span><span class="item__price">$30.000</span></div>
+          <p class="item__desc">Con pesto di pistacho.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Fettuccine o fusilli</h3><span class="item__dots"></span><span class="item__price">$27.000</span></div>
+          <p class="item__desc">Con salsa di pomodoro italiano y albahaca.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= INSALATE ================= -->
+    <section class="section" id="insalate">
+      <div class="section__head">
+        <img class="accent accent--tr" src="assets/menu/tomato.png" alt="" aria-hidden="true" />
+        <h2 class="section__title">Insalate</h2>
+      </div>
+
+      <div class="items items--2">
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Insalata Caesar</h3><span class="item__dots"></span><span class="item__price">$21.000</span></div>
+          <p class="item__desc">Lechuga, parmesano, pollo, crutones, aderezo césar. También disponible apto celíaco.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Insalata di pere</h3><span class="item__dots"></span><span class="item__price">$21.000</span></div>
+          <p class="item__desc">Rúcula, peras asadas, queso gorgonzola, nueces.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Insalata di zucca</h3><span class="item__dots"></span><span class="item__price">$21.000</span></div>
+          <p class="item__desc">Espinaca, cabutia asada, zanahoria asada, queso gorgonzola e pollo.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= DOLCE ================= -->
+    <section class="section" id="dolce">
+      <div class="section__head">
+        <h2 class="section__title">Dolce</h2>
+      </div>
+
+      <div class="items items--2">
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Tiramisú clásico</h3><span class="item__dots"></span><span class="item__price">$17.000</span></div>
+          <p class="item__desc">Crema di mascarpone, caffè, savoiardi, cacao amargo en polvo.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Torta caprese</h3><span class="item__dots"></span><span class="item__price">$16.000</span></div>
+          <p class="item__desc">Torta húmeda a base de harina de almendras y chocolate, ganache de chocolate semiamargo y salsa tofi.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Crema ai cioccolato bianco</h3><span class="item__dots"></span><span class="item__price">$16.000</span></div>
+          <p class="item__desc">Cremoso de chocolate blanco tostado, tierra de cacao, salsa de frutos rojos y pistacho.</p>
+        </article>
+
+        <article class="item">
+          <div class="item__row"><h3 class="item__name">Affogato</h3><span class="item__dots"></span><span class="item__price">$11.000</span></div>
+          <p class="item__desc">Helado de sabayón ahogado en un espresso.</p>
+        </article>
+      </div>
+
+      <div class="notes">
+        <p><strong>Por otros postres consultar disponibilidad en mostrador.</strong></p>
+        <p><strong>Cubierto: $3.000</strong> · Incluye agua AQA libre, panera de masa madre con manteca de ajo y perejil.</p>
+      </div>
+    </section>
+
+    <!-- ================= BEVANDE ================= -->
+    <section class="section" id="bevande">
+      <div class="section__head">
+        <h2 class="section__title">Bevande</h2>
+      </div>
+
+      <div class="list-grid list-grid--2">
+        <div class="list-block">
+          <h3 class="list-block__title">Bibite</h3>
+          <div class="simple-item"><span class="simple-item__name">Coca</span><span class="simple-item__dots"></span><span class="simple-item__price">$4.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Coca Zero</span><span class="simple-item__dots"></span><span class="simple-item__price">$4.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Sprite</span><span class="simple-item__dots"></span><span class="simple-item__price">$4.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Sprite Zero</span><span class="simple-item__dots"></span><span class="simple-item__price">$4.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Pomelo Schweppes</span><span class="simple-item__dots"></span><span class="simple-item__price">$4.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Tónica Schweppes</span><span class="simple-item__dots"></span><span class="simple-item__price">$4.000</span></div>
+        </div>
+
+        <div class="list-block">
+          <h3 class="list-block__title">Limonadas</h3>
+          <div class="simple-item"><span class="simple-item__name">Limonada individual</span><span class="simple-item__dots"></span><span class="simple-item__price">$4.500</span></div>
+          <div class="simple-item"><span class="simple-item__name">Limonada individual menta y jengibre</span><span class="simple-item__dots"></span><span class="simple-item__price">$5.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Jarra de limonada menta y jengibre</span><span class="simple-item__dots"></span><span class="simple-item__price">$7.500</span></div>
+          <div class="simple-item"><span class="simple-item__name">Exprimido de naranja</span><span class="simple-item__dots"></span><span class="simple-item__price">$5.900</span></div>
+        </div>
+
+        <div class="list-block">
+          <h3 class="list-block__title">Birre</h3>
+          <div class="simple-item"><span class="simple-item__name">Birra Peroni Italiana</span><span class="simple-item__dots"></span><span class="simple-item__price">$7.600</span></div>
+          <div class="simple-item"><span class="simple-item__name">Patagonia IPA</span><span class="simple-item__dots"></span><span class="simple-item__price">$5.200</span></div>
+          <div class="simple-item"><span class="simple-item__name">Patagonia Amber</span><span class="simple-item__dots"></span><span class="simple-item__price">$5.200</span></div>
+          <div class="simple-item"><span class="simple-item__name">Lager Stella Artois</span><span class="simple-item__dots"></span><span class="simple-item__price">$5.200</span></div>
+        </div>
+
+        <div class="list-block">
+          <h3 class="list-block__title">Aperitivo</h3>
+          <div class="simple-item"><span class="simple-item__name">Cynar Spritz</span><span class="simple-item__dots"></span><span class="simple-item__price">$9.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Negroni</span><span class="simple-item__dots"></span><span class="simple-item__price">$9.500</span></div>
+          <div class="simple-item"><span class="simple-item__name">Sbagliatto</span><span class="simple-item__dots"></span><span class="simple-item__price">$9.500</span></div>
+          <div class="simple-item"><span class="simple-item__name">Vermut Rosso Lunfa</span><span class="simple-item__dots"></span><span class="simple-item__price">$9.500</span></div>
+          <div class="simple-item"><span class="simple-item__name">Aperol Spritz</span><span class="simple-item__dots"></span><span class="simple-item__price">$9.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Campari Naranja</span><span class="simple-item__dots"></span><span class="simple-item__price">$9.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Campari Tonic</span><span class="simple-item__dots"></span><span class="simple-item__price">$9.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Gin Tonic</span><span class="simple-item__dots"></span><span class="simple-item__price">$9.000</span></div>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h3 class="sub__title">Vinos por copa</h3>
+        <div class="list-grid list-grid--3">
+          <div class="list-block">
+            <h4 class="list-block__title">Rossi</h4>
+            <div class="simple-item"><span class="simple-item__name">Leggero<span class="simple-item__winery">Fresco, suave y fácil de beber (Pinot Noir)</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$7.000</span></div>
+            <div class="simple-item"><span class="simple-item__name">Classico<span class="simple-item__winery">Equilibrado, gastronómico y versátil (Malbec)</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$9.000</span></div>
+            <div class="simple-item"><span class="simple-item__name">Intenso<span class="simple-item__winery">Estructurado, profundo y persistente (Malbec o Cabernet)</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$14.000</span></div>
+          </div>
+          <div class="list-block">
+            <h4 class="list-block__title">Bianchi</h4>
+            <div class="simple-item"><span class="simple-item__name">Fresco<span class="simple-item__winery">Ligero, cítrico y refrescante (Sauvignon Blanc)</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$7.000</span></div>
+            <div class="simple-item"><span class="simple-item__name">Morbido<span class="simple-item__winery">Redondo, frutado y envolvente (Chardonnay)</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$9.000</span></div>
+          </div>
+          <div class="list-block">
+            <h4 class="list-block__title">Rosato</h4>
+            <div class="simple-item"><span class="simple-item__name">Rosato<span class="simple-item__winery">Fresco, seco y frutado (Pinot Noir)</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$9.000</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= VINI ================= -->
+    <section class="section" id="vini">
+      <div class="section__head">
+        <img class="accent accent--tl" src="assets/menu/wine-hand.png" alt="" aria-hidden="true" />
+        <img class="accent accent--tr" src="assets/menu/wine-glass.png" alt="" aria-hidden="true" />
+        <h2 class="section__title">Vini</h2>
+        <p class="section__note">Botellas</p>
+      </div>
+
+      <div class="wine-grid">
+        <div class="list-block">
+          <h3 class="list-block__title">Malbec</h3>
+          <div class="simple-item"><span class="simple-item__name">Saint Felicien<span class="simple-item__winery">Bodega Esmeralda, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$27.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Sabato Reserva Malbec<span class="simple-item__winery">Bodega Sabato Wines, Valle de Uco, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$34.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Monteagrelo Malbec<span class="simple-item__winery">Bodega Bressia, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$30.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">El Enemigo Malbec<span class="simple-item__winery">Bodega Aleanna, Cachingo, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$46.700</span></div>
+          <div class="simple-item"><span class="simple-item__name">DV Catena Malbec<span class="simple-item__winery">Bodega Catena Zapata, Valle de Uco, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$49.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Mil Demonios<span class="simple-item__winery">Bodega Sin Reglas</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$28.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Colosso Malbec 2019<span class="simple-item__winery">Bodega Colosso Wines, Luján de Cuyo, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$38.500</span></div>
+          <div class="simple-item"><span class="simple-item__name">Aruma Malbec 2024<span class="simple-item__winery">Bodega Caro</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$42.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Don Juan Nahuel Malbec 2021<span class="simple-item__winery">Bodega Cielo y Tierra, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$42.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Desvelado<span class="simple-item__winery">Bodega Solo Contigo Wines, Los Chacayes, Tunuyán, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$25.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Araucana Río de Los Ciervos<span class="simple-item__winery">Bodega Ribera del Cuarzo, Río Negro, Patagonia</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$60.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">La Florita<span class="simple-item__winery">Bodega La Florita, El Peral, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$30.500</span></div>
+        </div>
+
+        <div class="list-block">
+          <h3 class="list-block__title">Pinot Noir</h3>
+          <div class="simple-item"><span class="simple-item__name">DV Catena Pinot-Pinot<span class="simple-item__winery">Bodega Catena Zapata, Valle de Uco</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$35.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Saint Felicien<span class="simple-item__winery">Bodega Esmeralda, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$27.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Cuchillo de Palo<span class="simple-item__winery">Bodega Cuchillo de Palo</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$28.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Mil Demonios<span class="simple-item__winery">Bodega Sin Reglas, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$26.500</span></div>
+          <div class="simple-item"><span class="simple-item__name">Sottano<span class="simple-item__winery">Bodega Sottano, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$28.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Sabato Reserva Pinot<span class="simple-item__winery">Bodega Sabato Wines, Valle de Uco, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$34.000</span></div>
+        </div>
+
+        <div class="list-block">
+          <h3 class="list-block__title">Cabernet</h3>
+          <div class="simple-item"><span class="simple-item__name">Cerbero<span class="simple-item__winery">Bodega Sin Reglas</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$46.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Sabato Reserva<span class="simple-item__winery">Bodega Sabato Wines, Valle de Uco, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$34.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">La Florita<span class="simple-item__winery">Bodega La Florita, El Peral, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$30.500</span></div>
+          <div class="simple-item"><span class="simple-item__name">El Enemigo Cabernet Franc<span class="simple-item__winery">Bodega Aleanna, Cachingo, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$46.700</span></div>
+          <div class="simple-item"><span class="simple-item__name">Neelands Rows Selection 2022<span class="simple-item__winery">Bodega Solo Contigo Wines, Los Chacayes, Valle de Uco, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$62.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Cuchillo de Palo<span class="simple-item__winery">Bodega Cuchillo de Palo</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$28.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Casa de Herrero<span class="simple-item__winery">Bodega Cuchillo de Palo</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$25.000</span></div>
+        </div>
+
+        <div class="list-block">
+          <h3 class="list-block__title">Blend</h3>
+          <div class="simple-item"><span class="simple-item__name">DV Catena Cabernet-Malbec<span class="simple-item__winery">Bodega Catena Zapata, Valle de Uco, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$31.200</span></div>
+          <div class="simple-item"><span class="simple-item__name">Nicasia Blend Histórico<span class="simple-item__winery">Bodega Esmeralda, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$27.300</span></div>
+          <div class="simple-item"><span class="simple-item__name">Desvelado Garnacha-Syrah<span class="simple-item__winery">Bodega Solo Contigo Wines, Los Chacayes, Valle de Uco, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$25.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Barroco Aire 2022<span class="simple-item__winery">Bodega Barroco, Chacayes, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$26.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Sabato Reserva Blend<span class="simple-item__winery">Bodega Sabato Wines, Valle de Uco, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$34.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Sabato Icon Blend<span class="simple-item__winery">Bodega Sabato Wines, Valle de Uco, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$70.000</span></div>
+        </div>
+
+        <div class="list-block">
+          <h3 class="list-block__title">Rosado</h3>
+          <div class="simple-item"><span class="simple-item__name">Vitto<span class="simple-item__winery">Bodega La Florita, El Peral, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$25.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Colosso<span class="simple-item__winery">Bodega Colosso Wines, Luján de Cuyo, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$28.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Mil Demonios<span class="simple-item__winery">Bodega Sin Reglas, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$27.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Cuchillo de Palo<span class="simple-item__winery">Bodega Cuchillo de Palo</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$41.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Sabato<span class="simple-item__winery">Bodega Sabato Wines, Valle de Uco, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$25.000</span></div>
+        </div>
+
+        <div class="list-block">
+          <h3 class="list-block__title">Chardonnay</h3>
+          <div class="simple-item"><span class="simple-item__name">Sabato Reserva<span class="simple-item__winery">Bodega Sabato Wines, Valle de Uco, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$29.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Saint Felicien<span class="simple-item__winery">Bodega Esmeralda, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$27.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Desvelado<span class="simple-item__winery">Bodega Solo Contigo Wines, Los Chacayes, Tunuyán, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$25.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Las Huertas<span class="simple-item__winery">Bodega Los Vascos, Valle de Colchagua, Chile</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$42.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Celador<span class="simple-item__winery">Bodega Cielo y Tierra</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$28.000</span></div>
+        </div>
+
+        <div class="list-block">
+          <h3 class="list-block__title">Sauvignon Blanc</h3>
+          <div class="simple-item"><span class="simple-item__name">Las Huertas<span class="simple-item__winery">Bodega Los Vascos, Valle de Colchagua, Chile</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$42.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Casa de Herrero Corte de Blancas<span class="simple-item__winery">Bodega Cuchillo de Palo</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$25.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Tierra de las Lechuzas<span class="simple-item__winery">Bodega La Florita, El Peral, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$25.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Sottano<span class="simple-item__winery">Bodega Colosso Wines, Luján de Cuyo, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$28.000</span></div>
+        </div>
+
+        <div class="list-block">
+          <h3 class="list-block__title">Viognier</h3>
+          <div class="simple-item"><span class="simple-item__name">Birth<span class="simple-item__winery">Bodega Barroco, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$43.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Nicasia<span class="simple-item__winery">Bodega Esmeralda, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$26.000</span></div>
+        </div>
+
+        <div class="list-block">
+          <h3 class="list-block__title">Espumantes</h3>
+          <div class="simple-item"><span class="simple-item__name">Cuchillo de Palo Extra Brut<span class="simple-item__winery">Bodega Cuchillo de Palo</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$44.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Sottano Extra Brut<span class="simple-item__winery">Bodega Sin Reglas, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$27.000</span></div>
+          <div class="simple-item"><span class="simple-item__name">Escorihuela Gascón Extra Brut<span class="simple-item__winery">Bodega Escorihuela Gascón, Mendoza</span></span><span class="simple-item__dots"></span><span class="simple-item__price">$27.000</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <p class="footer__title">PASTA</p>
+    <p class="footer__by">By Mauro Lacagnina</p>
+
+    <div class="footer__links">
+      <a href="https://instagram.com/lapasta.ar" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.2.8-.4.4-.6.7-.8 1.2-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.2.4.4.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.2-.8.4-.4.6-.7.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2Zm5.1-2a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z"/></svg>
+        Instagram
+      </a>
+      <a href="https://wa.me/5491130445221" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.8 4.2A10.9 10.9 0 0 0 12 1C6 1 1.1 5.9 1.1 12c0 1.9.5 3.8 1.5 5.5L1 23.1l5.8-1.5c1.6.9 3.4 1.3 5.2 1.3 6 0 10.9-4.9 10.9-10.9 0-2.9-1.1-5.7-3.1-7.8ZM12 21.1c-1.6 0-3.2-.4-4.6-1.3l-.3-.2-3.4.9.9-3.4-.2-.3a9 9 0 0 1-1.4-4.8C3 6.9 7 2.9 12 2.9c2.4 0 4.7.9 6.4 2.7a9 9 0 0 1 2.7 6.4c0 5-4.1 9.1-9.1 9.1Zm5-6.8c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-1.6-.8-2.6-1.4-3.7-3.2-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5-.1-.1-.6-1.4-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9 1-.9 2.2s.9 2.6 1 2.8c.1.2 1.8 2.8 4.5 3.9 1.7.7 2.3.8 3.2.6.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.2.1-1.3 0 0-.1-.1-.3-.2Z"/></svg>
+        WhatsApp
+      </a>
+      <a href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+        Volver al perfil
+      </a>
+    </div>
+
+    <p class="footer__address">PASTA · Buenos Aires · Argentina</p>
+  </footer>
+
+  <script>
+    // Scroll spy: marca la sección activa en la navegación
+    const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+    const sections = navLinks
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+
+    function setActive(id) {
+      navLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+      });
+      const active = navLinks.find((link) => link.classList.contains('active'));
+      if (active) {
+        const track = active.parentElement;
+        const target = active.offsetLeft - track.clientWidth / 2 + active.clientWidth / 2;
+        track.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+      }
+    }
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) setActive(entry.target.id);
+          });
+        },
+        { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+      );
+      sections.forEach((section) => observer.observe(section));
+    }
+
+    // Impresión: espera a que carguen las fuentes antes de imprimir
+    if (document.fonts) {
+      window.addEventListener('beforeprint', () => {});
+      document.fonts.ready.then(() => document.documentElement.classList.add('fonts-ready'));
+    }
+  </script>
+</body>
+</html>

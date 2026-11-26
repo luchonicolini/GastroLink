@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>PASTA Restaurant - See Menu - See Food on Instagram | Linktree</title>
+  <meta name="description" content="Linktree. Make your link do more." />
+
+  <!-- Tipografías modernas: Sora (display) + Manrope (interfaz) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            profileBg: '#10215c',
+            btnText: '#f7f7f6',
+          },
+          fontFamily: {
+            display: ['Sora', 'sans-serif'],
+            sans: ['Manrope', 'sans-serif'],
+          },
+          maxWidth: {
+            profileContainer: '580px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --profileBackground: #10215c;
+      --button-style-text: #f7f7f6;
+      --button-style-background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.1);
+      --button-radius: 9999px;
+      --profile-container-desktop-width: 580px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--profileBackground);
+      color: var(--button-style-text);
+      font-family: 'Manrope', sans-serif;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    ::selection {
+      background: rgba(255, 255, 255, 0.24);
+      color: #fff;
+    }
+
+    :focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.75);
+      outline-offset: 3px;
+    }
+
+    @media (min-width: 640px) {
+      body {
+        background-color: #0b1740;
+      }
+      .desktop-frame {
+        box-shadow: 0 24px 32px 0px rgba(0, 0, 0, 0.35);
+      }
+    }
+
+    /* ========================================================
+       MÁSCARA RADIAL EXACTA DE LINKTREE (HERO BLEND)
+       ======================================================== */
+    .hero-mask-sharp {
+      -webkit-mask-image: radial-gradient(
+        110.26% 96% at 50% 0%,
+        #000 50%,
+        rgba(0, 0, 0, 0.99) 54.68%,
+        rgba(0, 0, 0, 0.97) 58.79%,
+        rgba(0, 0, 0, 0.94) 62.4%,
+        rgba(0, 0, 0, 0.90) 65.61%,
+        rgba(0, 0, 0, 0.85) 68.52%,
+        rgba(0, 0, 0, 0.79) 71.2%,
+        rgba(0, 0, 0, 0.72) 73.75%,
+        rgba(0, 0, 0, 0.65) 76.25%,
+        rgba(0, 0, 0, 0.57) 78.8%,
+        rgba(0, 0, 0, 0.48) 81.48%,
+        rgba(0, 0, 0, 0.39) 84.39%,
+        rgba(0, 0, 0, 0.30) 87.6%,
+        rgba(0, 0, 0, 0.20) 91.21%,
+        rgba(0, 0, 0, 0.10) 95.32%,
+        rgba(0, 0, 0, 0.00) 100%
+      );
+      mask-image: radial-gradient(
+        110.26% 96% at 50% 0%,
+        #000 50%,
+        rgba(0, 0, 0, 0.99) 54.68%,
+        rgba(0, 0, 0, 0.97) 58.79%,
+        rgba(0, 0, 0, 0.94) 62.4%,
+        rgba(0, 0, 0, 0.90) 65.61%,
+        rgba(0, 0, 0, 0.85) 68.52%,
+        rgba(0, 0, 0, 0.79) 71.2%,
+        rgba(0, 0, 0, 0.72) 73.75%,
+        rgba(0, 0, 0, 0.65) 76.25%,
+        rgba(0, 0, 0, 0.57) 78.8%,
+        rgba(0, 0, 0, 0.48) 81.48%,
+        rgba(0, 0, 0, 0.39) 84.39%,
+        rgba(0, 0, 0, 0.30) 87.6%,
+        rgba(0, 0, 0, 0.20) 91.21%,
+        rgba(0, 0, 0, 0.10) 95.32%,
+        rgba(0, 0, 0, 0.00) 100%
+      );
+    }
+
+    .hero-mask-blur {
+      -webkit-mask-image: radial-gradient(
+        110.26% 96% at 50% 0%,
+        rgba(0, 0, 0, 0.00) 60%,
+        rgba(0, 0, 0, 0.01) 64.72%,
+        rgba(0, 0, 0, 0.03) 68.55%,
+        rgba(0, 0, 0, 0.07) 71.65%,
+        rgba(0, 0, 0, 0.12) 74.13%,
+        rgba(0, 0, 0, 0.18) 76.15%,
+        rgba(0, 0, 0, 0.25) 77.82%,
+        rgba(0, 0, 0, 0.33) 79.3%,
+        rgba(0, 0, 0, 0.41) 80.7%,
+        rgba(0, 0, 0, 0.50) 82.18%,
+        rgba(0, 0, 0, 0.59) 83.85%,
+        rgba(0, 0, 0, 0.67) 85.87%,
+        rgba(0, 0, 0, 0.76) 88.35%,
+        rgba(0, 0, 0, 0.85) 91.45%,
+        rgba(0, 0, 0, 0.93) 95.28%,
+        #000 100%
+      );
+      mask-image: radial-gradient(
+        110.26% 96% at 50% 0%,
+        rgba(0, 0, 0, 0.00) 60%,
+        rgba(0, 0, 0, 0.01) 64.72%,
+        rgba(0, 0, 0, 0.03) 68.55%,
+        rgba(0, 0, 0, 0.07) 71.65%,
+        rgba(0, 0, 0, 0.12) 74.13%,
+        rgba(0, 0, 0, 0.18) 76.15%,
+        rgba(0, 0, 0, 0.25) 77.82%,
+        rgba(0, 0, 0, 0.33) 79.3%,
+        rgba(0, 0, 0, 0.41) 80.7%,
+        rgba(0, 0, 0, 0.50) 82.18%,
+        rgba(0, 0, 0, 0.59) 83.85%,
+        rgba(0, 0, 0, 0.67) 85.87%,
+        rgba(0, 0, 0, 0.76) 88.35%,
+        rgba(0, 0, 0, 0.85) 91.45%,
+        rgba(0, 0, 0, 0.93) 95.28%,
+        #000 100%
+      );
+    }
+
+    /* ========================================================
+       BOTONES GLASSMORPHISM EXACTOS DE LINKTREE
+       ======================================================== */
+    .link-button-glass {
+      position: relative;
+      width: 100%;
+      min-height: 64px;
+      border-radius: 9999px;
+      overflow: hidden;
+      background: var(--button-style-background);
+      -webkit-backdrop-filter: blur(20px) brightness(1.1) contrast(0.9);
+      backdrop-filter: blur(20px) brightness(1.1) contrast(0.9);
+      box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.02);
+      transition: transform 75ms ease,
+                  box-shadow 75ms ease,
+                  background-color 75ms ease,
+                  backdrop-filter 75ms ease,
+                  -webkit-backdrop-filter 75ms ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    /* Borde luminoso refinado de cristal (XOR mask) */
+    .link-button-glass::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 9999px;
+      padding: 1px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3));
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: xor;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      pointer-events: none;
+    }
+
+    /* Ruido fractal granulado Linktree */
+    .link-button-glass::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 9999px;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.15;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+
+    .link-button-glass:hover {
+      -webkit-backdrop-filter: blur(20px) brightness(1.2) contrast(0.9);
+      backdrop-filter: blur(20px) brightness(1.2) contrast(0.9);
+      transform: scale(1.015);
+    }
+
+    .link-button-glass:active {
+      transform: scale(0.975);
+    }
+
+    /* Chips de iconos: vidrio circular moderno */
+    .topbar-badge {
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(16, 33, 92, 0.55) 0%, rgba(16, 33, 92, 0.32) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.16) inset, 0 8px 24px rgba(0, 0, 0, 0.16);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), background 220ms ease;
+    }
+    .topbar-badge:hover {
+      background: linear-gradient(180deg, rgba(16, 33, 92, 0.7) 0%, rgba(16, 33, 92, 0.45) 100%);
+      transform: translateY(-1px);
+    }
+    .topbar-badge:active {
+      transform: scale(0.94);
+    }
+
+    .icon-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 9999px;
+      color: #fff;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 6px 18px rgba(0, 0, 0, 0.14);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1), background 200ms ease, border-color 200ms ease;
+    }
+    .icon-chip:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.08) 100%);
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+    .icon-chip:active {
+      transform: scale(0.94);
+    }
+    .icon-chip svg {
+      transition: transform 200ms ease;
+    }
+    .icon-chip:hover svg {
+      transform: scale(1.06);
+    }
+
+    /* Barra superior: en desktop baja con el scroll y luego se pega arriba */
+    .topbar {
+      transition: transform 300ms ease-out, opacity 300ms ease-out;
+    }
+    @media (min-width: 640px) {
+      /* Especificidad sobre utilidades de Tailwind (fixed/top-0) */
+      #topbar {
+        position: absolute;
+        top: 54px;
+      }
+      #topbar.is-stuck {
+        position: fixed;
+        top: 12px;
+      }
+    }
+
+    .share-badge {
+      background: #25d366;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+      border: 0;
+    }
+
+    @keyframes rotateLogo {
+      0% { transform: rotateY(0deg); }
+      100% { transform: rotateY(1turn); }
+    }
+    .animate-spin-3d {
+      animation: rotateLogo 2.5s cubic-bezier(0.54, -0.34, 0.33, 1.14) 1s;
+    }
+
+    /* Animación Parallax de Scroll en el Hero */
+    @keyframes headerScrollFade {
+      0% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(100px) scale(1.01); }
+    }
+    @keyframes headerScrollFadeInner {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-50px) scale(1.1); }
+    }
+
+    .scroll-fade-outer {
+      animation: headerScrollFade ease-out forwards;
+      animation-timeline: scroll(root);
+      animation-range: 40px min(50vh, 580px);
+    }
+    .scroll-fade-inner {
+      animation: headerScrollFadeInner ease-out forwards;
+      animation-timeline: scroll(root);
+      animation-range: 40px calc(580px * 1.5);
+    }
+  </style>
+</head>
+<body class="w-full m-0 p-0">
+
+  <!-- Toast Notification Flotante de Enlace Copiado -->
+  <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 -translate-y-8 opacity-0 pointer-events-none z-50 flex items-center gap-2.5 px-6 py-3 rounded-full text-sm font-medium bg-black/80 backdrop-blur-2xl border border-white/20 text-white shadow-2xl transition-all duration-300">
+    <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+    </svg>
+    <span id="toast-text">¡Enlace copiado al portapapeles!</span>
+  </div>
+
+  <!-- Barra Superior (TopBar) fija con ancho completo de pantalla y contenedor centrado -->
+  <header id="topbar" class="fixed top-0 left-0 w-full z-40 pointer-events-none flex justify-center">
+    <div class="w-full max-w-profileContainer flex items-center justify-between px-4 py-3.5">
+      <!-- Botón Izquierdo: Icono Restaurante -->
+      <div class="topbar-badge flex h-10 w-10 items-center justify-center text-white pointer-events-auto shadow-md">
+        <button aria-label="PASTA Restaurant" class="flex items-center justify-center w-full h-full text-white">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+            <path d="M7 2v20" />
+            <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Botón Derecho: Compartir Perfil -->
+      <div class="topbar-badge flex h-10 w-10 items-center justify-center text-white pointer-events-auto shadow-md">
+        <button onclick="shareProfile()" aria-label="Compartir perfil" class="flex items-center justify-center w-full h-full text-white hover:opacity-90 active:scale-95 transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+            <path d="M216,112v96a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V112A16,16,0,0,1,56,96H80a8,8,0,0,1,0,16H56v96H200V112H176a8,8,0,0,1,0-16h24A16,16,0,0,1,216,112ZM93.66,69.66,120,43.31V136a8,8,0,0,0,16,0V43.31l26.34,26.35a8,8,0,0,0,11.32-11.32l-40-40a8,8,0,0,0-11.32,0l-40,40A8,8,0,0,0,93.66,69.66Z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Marco de Contenedor (580px en desktop, 100% en móvil) -->
+  <div class="relative w-full max-w-profileContainer mx-auto min-h-screen flex flex-col justify-between bg-profileBg desktop-frame sm:rounded-t-lg sm:mt-10 overflow-hidden">
+
+    <!-- Contenido Superior: Avatar Hero + Título PASTA + Redes -->
+    <div class="flex flex-col items-center w-full">
+      
+      <!-- Contenedor del Avatar Hero con desvanecimiento de borde hacia abajo -->
+      <div id="profile-picture" class="relative w-full h-[calc(100vw-80px)] sm:h-[500px] scroll-fade-outer">
+        <div style="background-color: var(--profileBackground);" class="hero-mask-sharp absolute left-0 right-0 top-0 h-[100vw] w-screen sm:h-[580px] sm:w-[580px] sm:overflow-hidden sm:rounded-t-lg">
+          <!-- Imagen Nítida de Cabecera -->
+          <img
+            src="assets/hero.png"
+            alt="PASTA Restaurant"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+          <!-- Imagen Desenfoque Ambiental en Parallax -->
+          <div class="hero-mask-blur absolute inset-0 h-full w-full scroll-fade-inner">
+            <img
+              src="assets/hero-blur.png"
+              alt=""
+              class="pointer-events-none h-full w-full select-none object-cover"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Título de Perfil: "PASTA" -->
+      <div id="profile-title" class="relative w-full text-center mt-3 px-6">
+        <h1 class="font-display font-semibold text-white text-[2.6rem] sm:text-[2.9rem] leading-[1.1] tracking-[-0.045em]">
+          PASTA
+        </h1>
+        <p class="mt-2 text-[10.5px] font-semibold uppercase tracking-[0.34em] text-white/55">
+          By Mauro Lacagnina
+        </p>
+      </div>
+
+      <!-- Iconos Sociales (Instagram & WhatsApp) -->
+      <div class="flex items-center justify-center gap-3 mt-5 mb-7">
+        <!-- Instagram -->
+        <a
+          href="https://instagram.com/lapasta.ar"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="icon-chip"
+          aria-label="Instagram"
+        >
+          <svg fill="currentColor" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+            <title>PASTA Instagram</title>
+            <path d="M12 2C9.2912 2 8.94131 2 7.86907 2.05643C7.03985 2.07241 6.21934 2.22888 5.44244 2.51919C4.78781 2.77878 4.23476 3.11738 3.67043 3.68172C3.11738 4.23476 2.76749 4.78781 2.51919 5.45372C2.27088 6.08578 2.10158 6.80813 2.05643 7.88036C2.01129 8.94131 2 9.27991 2 12C2 14.7088 2 15.0474 2.05643 16.1196C2.10158 17.1919 2.28217 17.9255 2.51919 18.5576C2.77878 19.2122 3.11738 19.7652 3.67043 20.3296C4.23476 20.8826 4.78781 21.2325 5.44244 21.4808C6.08578 21.7291 6.80813 21.8984 7.86907 21.9436C8.94131 21.9887 9.27991 22 12 22C14.7088 22 15.0474 22 16.1196 21.9436C17.1806 21.8984 17.9142 21.7178 18.5463 21.4808C19.2137 21.2306 19.8184 20.8377 20.3183 20.3296C20.8826 19.7652 21.2212 19.2009 21.4695 18.5576C21.7178 17.9142 21.8871 17.1919 21.9436 16.1196C21.9887 15.0587 22 14.7201 22 12C22 9.2912 21.9887 8.9526 21.9436 7.88036C21.9225 7.05065 21.7622 6.23037 21.4695 5.45372C21.2189 4.78649 20.8261 4.18182 20.3183 3.68172C19.754 3.11738 19.2122 2.77878 18.5463 2.51919C17.7686 2.23315 16.9482 2.08051 16.1196 2.06772C15.0474 2.01129 14.7088 2 12 2ZM11.0971 3.80587H12C14.6637 3.80587 14.9797 3.80587 16.0406 3.8623C16.6724 3.8686 17.2985 3.98313 17.8916 4.2009C18.3657 4.38149 18.693 4.59594 19.0429 4.94582C19.3928 5.29571 19.6072 5.63431 19.7991 6.09706C19.9345 6.45824 20.0925 6.97743 20.1377 7.95937C20.1828 9.00903 20.1941 9.32506 20.1941 12C20.1941 14.6637 20.1941 14.9797 20.1377 16.0406C20.1314 16.6724 20.0169 17.2985 19.7991 17.8916C19.6185 18.3657 19.3928 18.693 19.0429 19.0429C18.7043 19.3928 18.3657 19.6072 17.8916 19.7878C17.2992 20.0094 16.6731 20.1278 16.0406 20.1377C14.9797 20.1828 14.6637 20.1941 12 20.1941C9.32506 20.1941 9.00903 20.1941 7.95937 20.1377C7.3238 20.1322 6.69388 20.0177 6.09706 19.7991C5.63431 19.6072 5.307 19.3928 4.94582 19.0429C4.60722 18.7043 4.38149 18.3657 4.2009 17.8916C3.98313 17.2985 3.8686 16.6724 3.8623 16.0406C3.80587 14.9797 3.79458 14.6637 3.79458 12C3.79458 9.32506 3.80587 9.00903 3.85102 7.95937C3.85602 7.32375 3.97057 6.69376 4.18962 6.09706C4.38149 5.63431 4.59594 5.307 4.94582 4.94582C5.29571 4.60722 5.62302 4.38149 6.09706 4.2009C6.69376 3.98185 7.32375 3.86731 7.95937 3.8623C8.87359 3.81716 9.23476 3.80587 11.0971 3.79458V3.80587ZM17.3386 5.46501C17.1815 5.46501 17.0259 5.49596 16.8808 5.55608C16.7356 5.6162 16.6037 5.70433 16.4926 5.81542C16.3815 5.92652 16.2934 6.05841 16.2333 6.20356C16.1732 6.34871 16.1422 6.50429 16.1422 6.6614C16.1422 6.81851 16.1732 6.97408 16.2333 7.11924C16.2934 7.26439 16.3815 7.39628 16.4926 7.50737C16.6037 7.61847 16.7356 7.70659 16.8808 7.76672C17.0259 7.82684 17.1815 7.85779 17.3386 7.85779C17.6559 7.85779 17.9602 7.73174 18.1846 7.50737C18.4089 7.28301 18.535 6.9787 18.535 6.6614C18.535 6.3441 18.4089 6.03979 18.1846 5.81542C17.9602 5.59106 17.6559 5.46501 17.3386 5.46501ZM12 6.86456C11.3256 6.86456 10.6578 6.99739 10.0348 7.25547C9.41169 7.51355 8.84556 7.89182 8.36869 8.36869C7.89182 8.84556 7.51355 9.41169 7.25547 10.0348C6.99739 10.6578 6.86456 11.3256 6.86456 12C6.86456 12.6744 6.99739 13.3422 7.25547 13.9652C7.51355 14.5883 7.89182 15.1544 8.36869 15.6313C8.84556 16.1082 9.41169 16.4864 10.0348 16.7445C10.6578 17.0026 11.3256 17.1354 12 17.1354C13.362 17.1354 14.6682 16.5944 15.6313 15.6313C16.5944 14.6682 17.1354 13.362 17.1354 12C17.1354 10.638 16.5944 9.33178 15.6313 8.36869C14.6682 7.40561 13.362 6.86456 12 6.86456ZM12 8.67043C12.4372 8.67043 12.8702 8.75655 13.2742 8.92388C13.6781 9.0912 14.0452 9.33646 14.3544 9.64564C14.6635 9.95482 14.9088 10.3219 15.0761 10.7258C15.2434 11.1298 15.3296 11.5628 15.3296 12C15.3296 12.4372 15.2434 12.8702 15.0761 13.2742C14.9088 13.6781 14.6635 14.0452 14.3544 14.3544C14.0452 14.6635 13.6781 14.9088 13.2742 15.0761C12.8702 15.2434 12.4372 15.3296 12 15.3296C11.1169 15.3296 10.2701 14.9788 9.64564 14.3544C9.02122 13.7299 8.67043 12.8831 8.67043 12C8.67043 11.1169 9.02122 10.2701 9.64564 9.64564C10.2701 9.02122 11.1169 8.67043 12 8.67043Z"></path>
+          </svg>
+        </a>
+
+        <!-- WhatsApp -->
+        <a
+          href="https://api.whatsapp.com/send?phone=5491140635221"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="icon-chip"
+          aria-label="WhatsApp"
+        >
+          <svg fill="currentColor" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+            <title>PASTA WhatsApp</title>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.7945 4.21258C17.7267 2.14211 14.9765 1.00129 12.0462 1.00024C6.00812 1.00024 1.09402 5.91382 1.09192 11.9535C1.09087 13.8842 1.59562 15.7688 2.55417 17.4296L1 23.1063L6.807 21.5831C8.40685 22.4561 10.2084 22.9157 12.0415 22.9162H12.0462C18.0832 22.9162 22.9979 18.0021 23 11.9624C23.001 9.03532 21.8628 6.28359 19.7945 4.21311V4.21258ZM12.0462 21.0663H12.0425C10.409 21.0658 8.80658 20.6267 7.40842 19.7973L7.07592 19.5999L3.62986 20.5038L4.54954 17.1438L4.33314 16.7993C3.42186 15.3497 2.94022 13.6741 2.94127 11.954C2.94337 6.93435 7.0276 2.85012 12.0499 2.85012C14.4817 2.85117 16.7676 3.79922 18.4866 5.52042C20.2058 7.24109 21.1517 9.52903 21.1507 11.9614C21.1485 16.9816 17.0643 21.0658 12.0462 21.0658V21.0663ZM17.0401 14.2477C16.7665 14.1107 15.4209 13.4488 15.1698 13.3575C14.9187 13.266 14.7365 13.2204 14.5542 13.4945C14.372 13.7687 13.8473 14.3854 13.6876 14.5676C13.5279 14.7504 13.3682 14.773 13.0946 14.6358C12.821 14.4988 11.9391 14.2099 10.8933 13.2776C10.0798 12.5517 9.53032 11.6557 9.3707 11.3815C9.21101 11.1073 9.35389 10.9592 9.49041 10.8232C9.61331 10.7003 9.76407 10.5033 9.90114 10.3436C10.0383 10.184 10.0834 10.0695 10.1748 9.88721C10.2662 9.70442 10.2205 9.5448 10.1522 9.40767C10.0839 9.27059 9.53667 7.92334 9.30818 7.37554C9.08598 6.84191 8.86017 6.91439 8.69261 6.90547C8.53292 6.89758 8.35069 6.89601 8.16791 6.89601C7.98512 6.89601 7.68886 6.96429 7.43781 7.23847C7.18677 7.51261 6.47978 8.17493 6.47978 9.52164C6.47978 10.8683 7.46042 12.1704 7.59749 12.3532C7.73457 12.536 9.52769 15.3003 12.2731 16.4863C12.926 16.7683 13.436 16.9369 13.8336 17.063C14.4891 17.2715 15.0857 17.2421 15.5574 17.1717C16.0832 17.0929 17.1767 16.5094 17.4047 15.8702C17.6326 15.2309 17.6326 14.6826 17.5644 14.5686C17.4961 14.4546 17.3133 14.3858 17.03 14.2477Z"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Lista de Botones (con la separación oficial de 14px y estilos idénticos) -->
+    <div class="px-4 pb-14 w-full flex flex-col gap-[14px]">
+      
+      <!-- Botón 1: MENU -->
+      <a
+        href="menu.html"
+        class="link-button-glass px-8 py-3 text-center text-[13px] sm:text-[14px] font-semibold uppercase tracking-[0.14em] leading-[1.3] text-[#f7f7f6]"
+      >
+        MENU
+      </a>
+
+      <!-- Botón 2: MENU EJECUTIVO -->
+      <a
+        href="https://drive.google.com/file/d/1DryraqJBpCX8fPC8eZdcom1_LvnXZC7k/view?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link-button-glass flex-col gap-1 px-8 py-3 text-center text-[#f7f7f6]"
+      >
+        <span class="text-[13px] sm:text-[14px] font-semibold uppercase tracking-[0.14em] leading-[1.3]">Menu ejecutivo</span>
+        <span class="text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.16em] leading-[1.3] text-white/55">Lunes a viernes · 12:00 a 16:00</span>
+      </a>
+
+      <!-- Botón 3: Reservas / Whatsapp (Con Thumbnail Redondo Oficial a la Izquierda) -->
+      <a
+        href="https://wa.me/5491130445221"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link-button-glass px-16 py-3 text-center text-[13px] sm:text-[14px] font-semibold uppercase tracking-[0.14em] leading-[1.3] text-[#f7f7f6]"
+      >
+        <!-- Badge circular con el icono de WhatsApp en la izquierda -->
+        <div class="share-badge absolute left-2.5 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full text-white" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.7945 4.21258C17.7267 2.14211 14.9765 1.00129 12.0462 1.00024C6.00812 1.00024 1.09402 5.91382 1.09192 11.9535C1.09087 13.8842 1.59562 15.7688 2.55417 17.4296L1 23.1063L6.807 21.5831C8.40685 22.4561 10.2084 22.9157 12.0415 22.9162H12.0462C18.0832 22.9162 22.9979 18.0021 23 11.9624C23.001 9.03532 21.8628 6.28359 19.7945 4.21311V4.21258ZM12.0462 21.0663H12.0425C10.409 21.0658 8.80658 20.6267 7.40842 19.7973L7.07592 19.5999L3.62986 20.5038L4.54954 17.1438L4.33314 16.7993C3.42186 15.3497 2.94022 13.6741 2.94127 11.954C2.94337 6.93435 7.0276 2.85012 12.0499 2.85012C14.4817 2.85117 16.7676 3.79922 18.4866 5.52042C20.2058 7.24109 21.1517 9.52903 21.1507 11.9614C21.1485 16.9816 17.0643 21.0658 12.0462 21.0658V21.0663ZM17.0401 14.2477C16.7665 14.1107 15.4209 13.4488 15.1698 13.3575C14.9187 13.266 14.7365 13.2204 14.5542 13.4945C14.372 13.7687 13.8473 14.3854 13.6876 14.5676C13.5279 14.7504 13.3682 14.773 13.0946 14.6358C12.821 14.4988 11.9391 14.2099 10.8933 13.2776C10.0798 12.5517 9.53032 11.6557 9.3707 11.3815C9.21101 11.1073 9.35389 10.9592 9.49041 10.8232C9.61331 10.7003 9.76407 10.5033 9.90114 10.3436C10.0383 10.184 10.0834 10.0695 10.1748 9.88721C10.2662 9.70442 10.2205 9.5448 10.1522 9.40767C10.0839 9.27059 9.53667 7.92334 9.30818 7.37554C9.08598 6.84191 8.86017 6.91439 8.69261 6.90547C8.53292 6.89758 8.35069 6.89601 8.16791 6.89601C7.98512 6.89601 7.68886 6.96429 7.43781 7.23847C7.18677 7.51261 6.47978 8.17493 6.47978 9.52164C6.47978 10.8683 7.46042 12.1704 7.59749 12.3532C7.73457 12.536 9.52769 15.3003 12.2731 16.4863C12.926 16.7683 13.436 16.9369 13.8336 17.063C14.4891 17.2715 15.0857 17.2421 15.5574 17.1717C16.0832 17.0929 17.1767 16.5094 17.4047 15.8702C17.6326 15.2309 17.6326 14.6826 17.5644 14.5686C17.4961 14.4546 17.3133 14.3858 17.03 14.2477Z"/>
+          </svg>
+        </div>
+        <span>Reservas / Whatsapp</span>
+      </a>
+
+      <!-- Botón 4: VENTA MAYORISTA -->
+      <a
+        href="https://wa.me/5491134575102"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link-button-glass px-8 py-3 text-center text-[13px] sm:text-[14px] font-semibold uppercase tracking-[0.14em] leading-[1.3] text-[#f7f7f6]"
+      >
+        Venta mayorista
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- Script para asegurar el efecto Parallax al hacer scroll en todos los navegadores -->
+  <script>
+    // Barra superior: en desktop se desplaza con la página y se pega arriba
+    // al pasar el offset inicial (54px), igual que Linktree.
+    const topbar = document.getElementById('topbar');
+    const desktopQuery = window.matchMedia('(min-width: 640px)');
+    const TOPBAR_OFFSET = 54;
+
+    function updateTopbar() {
+      const isStuck = desktopQuery.matches && window.scrollY >= TOPBAR_OFFSET;
+      topbar.classList.toggle('is-stuck', isStuck);
+    }
+
+    if (topbar) {
+      window.addEventListener('scroll', updateTopbar, { passive: true });
+      desktopQuery.addEventListener('change', updateTopbar);
+      updateTopbar();
+    }
+
+    const profilePic = document.getElementById('profile-picture');
+    if (profilePic && !CSS.supports('animation-timeline', 'scroll()')) {
+      const sharpLayer = profilePic.querySelector('.hero-mask-sharp');
+      const blurLayer = profilePic.querySelector('.hero-mask-blur');
+      
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY || window.pageYOffset || 0;
+        const progress = Math.min(Math.max(y / 400, 0), 1);
+        
+        if (sharpLayer) {
+          sharpLayer.style.opacity = (1 - progress * 1.15).toFixed(3);
+          sharpLayer.style.transform = `translateY(${y * 0.22}px) scale(${1 + progress * 0.02})`;
+        }
+        if (blurLayer) {
+          blurLayer.style.transform = `translateY(${-y * 0.12}px) scale(${1 + progress * 0.08})`;
+        }
+      }, { passive: true });
+    }
+
+    // ========================================================
+    // FUNCIONES DEL BOTÓN COMPARTIR Y TOAST
+    // ========================================================
+    let toastTimer;
+    function showToast(msg = "¡Enlace copiado al portapapeles!") {
+      const toast = document.getElementById('toast');
+      const toastText = document.getElementById('toast-text');
+      toastText.textContent = msg;
+      toast.classList.remove('opacity-0', '-translate-y-8', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('opacity-0', '-translate-y-8', 'pointer-events-none');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 2500);
+    }
+
+    function shareProfile() {
+      const shareData = {
+        title: 'PASTA Restaurant',
+        text: 'Mira el menú y contacto de PASTA',
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        navigator.share(shareData).catch(() => {});
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          showToast('¡Enlace copiado al portapapeles!');
+        }).catch(() => {
+          fallbackCopy(window.location.href);
+        });
+      } else {
+        fallbackCopy(window.location.href);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const input = document.createElement('textarea');
+      input.value = text;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+      showToast('¡Enlace copiado al portapapeles!');
+    }
+  </script>
+</body>
+</html>
