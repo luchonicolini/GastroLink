@@ -1,4 +1,4 @@
-# 🍽️ GastroLink — Digital Menu & Link-in-Bio for Restaurants
+# GastroLink — Digital Menu & Link-in-Bio for Restaurants
 
 <div align="center">
 
@@ -10,138 +10,138 @@
 ![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
 
 <p align="center">
-  <b>Una solución web premium, ligera y 100% personalizable de enlace en biografía (Link-in-Bio) y carta digital interactiva para el sector gastronómico.</b>
+  <b>Solución web ligera y personalizable de enlace en biografía (Link-in-Bio) y carta gastronómica interactiva para restaurantes y locales culinarios.</b>
 </p>
 
-[Ver Demo](#-demostración-en-vivo) • [Características](#-características-principales) • [Estructura](#-estructura-del-proyecto) • [Personalización](#-cómo-adaptarlo-a-cualquier-restaurante) • [Deploy](#-despliegue-rápido)
+[Visión General](#visión-general) • [Características](#características) • [Estructura del Proyecto](#estructura-del-proyecto) • [Personalización](#guía-de-personalización) • [Despliegue](#despliegue)
 
 </div>
 
 ---
 
-## 📌 ¿Qué es GastroLink?
+## Visión General
 
-**GastroLink** nace como una alternativa de alto impacto visual frente a los árboles de enlaces convencionales (como Linktree o Beacons). Diseñado específicamente para **restaurantes, bistrós, cafeterías, bares y locales gastronómicos**, combina la simplicidad de un portal de accesos directos con la elegancia de una **carta gastronómica digital navegable**.
+GastroLink es una solución web orientada al sector gastronómico diseñada para sustituir los árboles de enlaces genéricos (como Linktree o Beacons) por una experiencia visual alineada a la identidad de un restaurante.
 
-El proyecto está concebido bajo una arquitectura **White-Label (marca blanca)**: con cambios mínimos en variables de estilo, imágenes y textos, puede adaptarse a la identidad corporativa de cualquier establecimiento culinario.
-
----
-
-## ✨ Características Principales
-
-### 📱 1. Portal de Enlaces (`index.html`)
-* **Diseño Glassmorphism Premium**: Botones con efecto de vidrio esmerilado (`backdrop-filter: blur`), bordes con brillo sutil y textura de ruido SVG para evitar gradientes planos.
-* **Hero con Máscara Radial**: El logotipo y la cabecera se funden suavemente con el fondo del perfil mediante gradientes y máscaras CSS.
-* **Micro-interacciones Táctiles**: Físicas elásticas (spring physics) al interactuar con los enlaces en dispositivos móviles y de escritorio.
-* **Integración con Redes y WhatsApp**: Enlaces directos a perfiles sociales (Instagram, TikTok, Spotify) y botón prioritario para reservas o pedidos vía WhatsApp con insignia gráfica.
-* **Compartir Nativo (Web Share API)**: Barra superior con botón flotante que activa el menú nativo de compartir del smartphone (WhatsApp, Instagram Stories, AirDrop) o copia el enlace con toast interactivo de confirmación.
-
-### 📖 2. Carta Gastronómica Digital (`menu.html`)
-* **Navegación Sticky por Categorías**: Barra superior pegajosa con scroll automático suave hacia cada sección (Antipasti, Pastas, Ensaladas, Postres, Vinos).
-* **Tipografía Editorial**: Combinación cuidada de tipografía display serif (*Bodoni Moda*) para títulos elegantes y sans-serif legible (*Montserrat*) para descripciones de platos e ingredientes.
-* **Detalle de Platos y Precios**: Estructura clara para descripción de ingredientes, opciones para celíacos o vegetarianos, y maridaje de bebidas.
-* **Ilustraciones Integradas**: Acentos visuales que enriquecen la experiencia del comensal en mesa (escaneo de código QR).
-
-### ⚡ 3. Rendimiento y Accesibilidad
-* **Cero Dependencias Pesadas**: Construido con HTML5 semántico, Tailwind CSS y Vanilla JS. Carga ultra rápida sin latencia de frameworks.
-* **100% Mobile-First**: Optimizado para pantallas táctiles de smartphones, la principal fuente de visitas desde códigos QR y perfiles de Instagram.
-* **Soporte PWA / Safe Areas**: Respeta los márgenes seguros (`viewport-fit=cover`) de iPhones con notch e islas dinámicas.
+El proyecto combina un portal de accesos directos (redes, reservas por WhatsApp, ubicación y delivery) con una carta digital interactiva estructurada por secciones. Está construido bajo una arquitectura de marca blanca (white-label), lo que permite reutilizar el código base y adaptarlo a distintos establecimientos culinarios modificando variables de diseño, recursos gráficos y contenidos.
 
 ---
 
-## 📂 Estructura del Proyecto
+## Características
+
+### 1. Portal de Enlaces (index.html)
+* **Interfaz con Glassmorphism**: Botones con efecto de desenfoque (`backdrop-filter`), bordes con contraste sutil y textura de ruido para evitar gradientes planos.
+* **Cabecera con Máscara Radial**: Integración fluida del logotipo con el fondo mediante gradientes y máscaras CSS.
+* **Micro-interacciones**: Transiciones con físicas elásticas en estados de hover y active optimizadas para pantallas táctiles.
+* **Acceso Directo a WhatsApp y Redes**: Botón destacado con miniatura gráfica para reservas directas y enlaces a perfiles sociales.
+* **Web Share API**: Botón superior que invoca el diálogo nativo de compartir del sistema operativo móvil, con fallback automático de copiado al portapapeles.
+
+### 2. Carta Gastronómica Digital (menu.html)
+* **Navegación Sticky por Categorías**: Barra superior con anclaje fijo y scroll suave hacia cada sección del menú (Entradas, Pastas, Ensaladas, Postres, Vinos).
+* **Tipografía Editorial**: Combinación de fuentes display serif (*Bodoni Moda*) para encabezados y sans-serif (*Montserrat*) para ingredientes y descripciones de platos.
+* **Detalle de Ítems**: Estructura modular para nombres de platos, precios, especificaciones de ingredientes y notas de maridaje.
+* **Ilustraciones Integradas**: Acentos visuales vectoriales pensados para la lectura del comensal desde códigos QR en mesa.
+
+### 3. Rendimiento y Accesibilidad
+* **Sin Dependencias de Runtime**: Construido exclusivamente con HTML5 semántico, Tailwind CSS y JavaScript vanilla.
+* **Enfoque Mobile-First**: Diseñado priorizando la experiencia en smartphones, fuente principal de tráfico en gastronomía.
+* **Compatibilidad con Áreas Seguras**: Configuración de `viewport-fit=cover` para pantallas con notch e isla dinámica.
+
+---
+
+## Estructura del Proyecto
 
 ```plaintext
 GastroLink/
-├── index.html              # Portal principal Link-in-Bio (Landing)
-├── menu.html               # Carta gastronómica interactiva y categorizada
+├── index.html              # Portal principal Link-in-Bio
+├── menu.html               # Carta gastronómica interactiva
 ├── assets/
-│   ├── hero.png            # Logotipo / imagen destacada del restaurante
-│   ├── hero-blur.png       # Resplandor ambiental para el fondo hero
-│   ├── whatsapp-thumb.png  # Miniatura gráfica para el botón de WhatsApp
-│   └── menu/               # Ilustraciones y recursos visuales de la carta
+│   ├── hero.png            # Logotipo / imagen principal
+│   ├── hero-blur.png       # Resplandor ambiental de cabecera
+│   ├── whatsapp-thumb.png  # Miniatura gráfica para botón de WhatsApp
+│   └── menu/               # Ilustraciones de secciones y platos
 │       ├── spaghetti.png
 │       ├── lasagna.png
 │       ├── wine-glass.png
 │       └── ...
-├── .gitignore              # Archivos y carpetas excluidas de Git
-└── README.md               # Documentación del proyecto
+├── .gitignore              # Archivos excluidos del control de versiones
+└── README.md               # Documentación técnica del repositorio
 ```
 
 ---
 
-## 🎨 Cómo adaptarlo a cualquier restaurante
+## Guía de Personalización
 
-GastroLink está pensado para que cualquier desarrollador o dueño de restaurante pueda personalizarlo en pocos minutos:
+Para adaptar GastroLink a otro restaurante:
 
-### 1. Cambiar los colores de marca
-En `index.html`, ajusta las variables CSS o clases de Tailwind en la cabecera:
+### 1. Colores e Identidad Visual
+En `index.html`, modificar los valores de las variables en la sección de estilos:
 ```html
 <style>
   :root {
-    --profile-bg: #10215c; /* Color de fondo corporativo */
+    --profile-bg: #10215c; /* Fondo general del perfil */
     --button-bg: rgba(255, 255, 255, 0.12); /* Fondo de los botones */
   }
 </style>
 ```
 
-### 2. Sustituir los recursos gráficos
-Reemplaza los archivos en `assets/`:
-* `assets/hero.png`: El logo o isotipo del nuevo local.
-* `assets/hero-blur.png`: Versión difuminada para el resplandor ambiental superior.
-* `assets/whatsapp-thumb.png`: Icono o logo para pedidos y reservas.
+### 2. Recursos Gráficos
+Reemplazar los archivos dentro de la carpeta `assets/`:
+* `assets/hero.png`: Logotipo o isotipo del restaurante.
+* `assets/hero-blur.png`: Imagen difuminada para el resplandor superior.
+* `assets/whatsapp-thumb.png`: Icono o distintivo del canal de reservas.
 
-### 3. Configurar enlaces y WhatsApp
-Modifica los atributos `href` en `index.html` con las URLs del restaurante:
+### 3. Enlaces y Canales de Contacto
+Actualizar las rutas y números telefónicos en `index.html`:
 ```html
-<a href="https://wa.me/54911XXXXXXXX?text=Hola,%20quiero%20hacer%20una%20reserva" target="_blank">
+<a href="https://wa.me/54911XXXXXXXX?text=Hola,%20quisiera%20reservar%20una%20mesa" target="_blank">
   Reservar por WhatsApp
 </a>
 ```
 
-### 4. Actualizar la carta de platos
-En `menu.html`, añade, edita o elimina platos fácilmente cambiando los bloques de categoría:
+### 4. Platos y Categorías de la Carta
+En `menu.html`, editar los bloques de artículos según la oferta gastronómica:
 ```html
 <article class="menu-item">
   <div class="menu-item__head">
     <h3>Nombre del Plato</h3>
     <span class="price">$12.500</span>
   </div>
-  <p class="description">Descripción de los ingredientes y detalles del plato.</p>
+  <p class="description">Ingredientes, preparación y detalles del plato.</p>
 </article>
 ```
 
 ---
 
-## 🚀 Despliegue Rápido
+## Despliegue
 
-Al ser un proyecto estático (Vanilla HTML/CSS/JS), puedes publicarlo gratis en segundos en cualquier plataforma:
+Al tratarse de una aplicación web estática sin backend, puede desplegarse de forma directa en servicios de hosting estático:
 
-* **GitHub Pages**: Ve a `Settings` > `Pages` > Selecciona la rama `main` y guarda.
-* **Vercel**: Importa el repositorio `GastroLink` y haz click en **Deploy**.
-* **Netlify**: Arrastra la carpeta o conecta el repositorio de GitHub.
-
----
-
-## 🛠️ Tecnologías Utilizadas
-
-* **HTML5 Semántico**: Para estructura, accesibilidad y soporte SEO.
-* **Tailwind CSS**: Estilos utilitarios rápidos y consistentes.
-* **CSS3 Custom Properties & Backdrop Filter**: Glassmorphism avanzado, gradientes radiales y animaciones fluidas.
-* **Vanilla JavaScript (ES6+)**: Manejo de Web Share API, clipboard fallback y navegación por anclas.
-* **Google Fonts**: *Sora*, *Manrope*, *Bodoni Moda* y *Montserrat*.
+* **GitHub Pages**: En la configuración del repositorio (`Settings` > `Pages`), seleccionar la rama `main` y guardar.
+* **Vercel**: Importar el repositorio `GastroLink` y ejecutar el despliegue automático.
+* **Netlify**: Conectar el repositorio o arrastrar el directorio del proyecto para publicación inmediata.
 
 ---
 
-## 👤 Autor
+## Tecnologías Utilizadas
+
+* **HTML5**: Marcado semántico y accesibilidad.
+* **Tailwind CSS**: Utilidades para diagramación, espaciado y tipografía.
+* **CSS3**: Variables CSS, soporte de `backdrop-filter` para glassmorphism y animaciones.
+* **JavaScript (ES6+)**: Implementación de Web Share API y manejo del portapapeles.
+* **Google Fonts**: Familias tipográficas *Sora*, *Manrope*, *Bodoni Moda* y *Montserrat*.
+
+---
+
+## Autor
 
 Desarrollado por **Luciano Nicolini**
 
-* 🐙 **GitHub**: [@luchonicolini](https://github.com/luchonicolini)
-* 💼 **Email**: [nicolini.luciano@hotmail.com](mailto:nicolini.luciano@hotmail.com)
+* GitHub: [@luchonicolini](https://github.com/luchonicolini)
+* Correo: [nicolini.luciano@hotmail.com](mailto:nicolini.luciano@hotmail.com)
 
 ---
 
-## 📄 Licencia
+## Licencia
 
-Este proyecto se distribuye bajo la licencia **MIT**. Puedes usarlo libremente para proyectos personales o comerciales.
+Este proyecto se distribuye bajo la licencia **MIT**. Su uso es libre tanto para fines personales como comerciales.
